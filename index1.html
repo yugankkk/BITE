@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bite - Brush Better</title>
+    <link rel="icon" href="bite.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            background-color: transparent !important;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1020;
+        }
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .navbar-nav .nav-link {
+            color: black;
+            text-transform: uppercase;
+            margin: 0 10px;
+            padding: 0;
+        }
+        .navbar-icons {
+            display: flex;
+            align-items: center;
+        }
+        .navbar-icons a {
+            color: black;
+            margin-left: 15px;
+        }
+        .hero-section {
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            color: white;
+            position: relative;
+        }
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            transform: translateY(-50%);
+            max-width: 500px;
+        }
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.1));
+        }
+        .product-image {
+            max-height: 300px;
+            object-fit: contain;
+        }
+        .as-seen-in img {
+            max-height: 30px;
+            opacity: 0.7;
+            margin: 0 15px;
+        }
+
+        .reviews-section {
+    background-color: black;
+    color: white;
+    padding: 100px 0;
+}
+
+.reviews-container {
+    display: flex;
+    flex-wrap: nowrap; /* Keeps all reviews in a single row */
+    justify-content: center;
+    gap: 20px; /* Adds spacing between review items */
+    
+}
+
+.review-item {
+    flex: 1;
+    max-width: 30%;
+    text-align: center; /* Ensures text is centered */
+    ;
+}
+
+.review-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+
+}
+
+
+    /* Shop Category Section */
+.shop-category-section img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+/* Best Sellers */
+.best-sellers .card {
+    border: none;
+}
+
+/* Why Bits Section */
+.why-bits-section {
+    padding: 100px 0;
+    text-align: center;
+}
+
+.why-bits-icon {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+/* FAQs Section */
+.faqs-section {
+    background-color: white;
+    padding: 100px 0;
+}
+
+/* Footer */
+.footer {
+    background-color: black;
+    color: white;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.footer-logo {
+    max-width: 100px;
+    margin-bottom: 20px;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.footer-social a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.footer-social a:hover {
+    opacity: 0.7;
+}
+
+/* Hero Section */
+.hero-section {
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: white;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 5%;
+}
+
+.hero-content {
+    max-width: 500px;
+    z-index: 2;
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1));
+    z-index: 1;
+}
+
+/* Product Image */
+.product-image {
+    max-height: 300px;
+    object-fit: contain;
+    width: 100%;
+}
+
+/* As Seen In */
+.as-seen-in {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.as-seen-in img {
+    max-height: 30px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.as-seen-in img:hover {
+    opacity: 1;
+}
+
+/* How to Use Section */
+.how-to-use-section {
+    padding: 80px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+}
+
+.how-to-step {
+    text-align: center;
+    padding: 15px;
+    flex: 1;
+    min-width: 280px;
+}
+
+.how-to-use-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.step-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #999;
+    margin-bottom: 5px;
+}
+
+.how-to-step h3 {
+    margin-top: 10px;
+    margin-bottom: 12px;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.how-to-step p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .how-to-step {
+        min-width: 220px;
+    }
+    
+    .how-to-use-image {
+        height: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+    
+    .how-to-step {
+        margin-bottom: 30px;
+    }
+    
+    .how-to-use-image {
+        height: 350px;
+    }
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="navbar-container">
+            <a class="navbar-brand" href="#">Bite</a>
+            
+            <div class="navbar-nav">
+                <a class="nav-link" href="#">SHOP</a>
+                <a class="nav-link" href="#">ABOUT</a>
+                <a class="nav-link" href="#">OUR IMPACT</a>
+            </div>
+            
+            <div class="navbar-icons">
+                <a href="#" class="user-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3zm-1-.004c0-.001-.001-.002-.002-.004h-.004c-.025-.003-.071-.023-.134-.066-.093-.051-.204-.124-.326-.221a3 3 0 0 1-.307-.248 2 2 0 0 1-.194-.233 1 2 0 0 1-.041-.706c.074-.474.28-.854.54-1.121A2 2 0 0 1 8 11c.428 0 .833.134 1.166.378.357.265.566.659.64 1.11q.008.048.014.107z"/>
+                    </svg>
+                </a>
+                <a href="#" class="cart-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="hero-section" style="background-image: url('jpeg-optimizer_2024.07.01_homepage_hero_desktop_2.jpg');">
+        <div class="hero-content">
+            <h1 class="display-3 fw-bold mb-4">It's time to<br>brush better.</h1>
+            <p class="lead mb-4">Clean up your routine with Toothpaste Bits. No plastic, no harsh chemicals – just a better way to brush your teeth.</p>
+            <a href="#" class="btn btn-dark btn-lg">SHOP NOW</a>
+        </div>
+    </div>
+
+    <div class="container-fluid text-center py-5 as-seen-in">
+        <div class="d-flex justify-content-center align-items-center">
+            <img src="forbes-logo_e97e1220-c43c-4b0f-b082-3d5905e17da6.png" alt="Forbes">
+            <img src="oprah-magazine-logo-113023.png" alt="Oprah Magazine">
+            <img src="cosmopolitan-logo-113023.png" alt="Cosmopolitan">
+            <img src="womens-health-logo.png" alt="Women's Health">
+            <img src="vogue-logo-113023.png" alt="Vogue">
+            <img src="goop-113023.png" alt="Goop">
+            <img src="elle-logo.png" alt="Elle">
+            <img src="people-logo-113023.png" alt="People">
+        </div>
+    </div>
+
+    <div class="how-to-use-section">
+        <section class="how-to-use-section">
+            <h2 class="section-title">How To Use</h2>
+            
+            <div class="row">
+                <div class="how-to-step">
+                    <img src="step1-image.jpg" alt="Grab a Toothpaste Bit" class="how-to-use-image">
+                    <div class="step-number">1</div>
+                    <h3>Grab a Toothpaste Bit</h3>
+                    <p>A single Bit is all you need each time.</p>
+                </div>
+                
+                <div class="how-to-step">
+                    <img src="step2-image.jpg" alt="Chew your Bit" class="how-to-use-image">
+                    <div class="step-number">2</div>
+                    <h3>Chew your Bit</h3>
+                    <p>A soft paste will form in your mouth.</p>
+                </div>
+                
+                <div class="how-to-step">
+                    <img src="step3-image.jpg" alt="Brush with a wet toothbrush" class="how-to-use-image">
+                    <div class="step-number">3</div>
+                    <h3>Brush with a wet toothbrush</h3>
+                    <p>It'll foam up, just like regular toothpaste.</p>
+                </div>
+            </div>
+        </section>
+            </div>
+        </div>
+        <div class="text-center mt-5">
+            <a href="#" class="btn btn-dark btn-lg">SHOP NOW</a>
+        </div>
+    </div>
+    <div class="reviews-section container-fluid text-center">
+        <h2 class="mb-5">21,000+ Reviews For A Reason</h2>
+    
+        <div class="reviews-container">  <!-- Renamed to avoid conflicts -->
+            <div class="review-item">
+                <img src="homepage-ugc-review-5.jpg" alt="Review 1" class="review-image">
+                <p>"I have been using Bits for a year now, and I am very happy with them. My dental hygienist too! I highly recommend them!" - Anne L.</p>
+            </div>
+            <div class="review-item">
+                <img src="homepage-ugc-review-4.jpg" alt="Review 2" class="review-image">
+                <p>"I love the sustainable packaging and my teeth have gotten whiter since using this toothpaste. Easy to travel with!" - Samda K.</p>
+            </div>
+            <div class="review-item">
+                <img src="homepage-ugc-review-3.jpg" alt="Review 3" class="review-image">
+                <p>"No mess, cleans and whitens beautifully, and no plastic or repeat containers!" - Kathleen M.</p>
+            </div>
+        </div>
+    
+        <!-- Centering the button properly -->
+        <div class="text-center">
+            <a href="#" class="btn btn-outline-light mt-4" style="background-color: rgb(13, 138, 113); color: rgb(6, 6, 6); padding: 10px 20px; font-size: 16px; border: none;">
+                READ ALL REVIEWS
+              </a>
+        </div>
+    </div>
+    
+
+    <!-- Shop By Category Section -->
+    <div class="shop-category-section container-fluid text-center py-5">
+        <h2 class="mb-5">Shop By Category</h2>
+        <div class="row justify-content-center"> <!-- Center align the row content -->
+            <div class="col-md-3 col-6 d-flex flex-column align-items-center">
+                <img src="shop_by_category_toothpaste_bits_2-optimized.jpg" alt="Toothpaste Bits" class="category-image">
+                <h3 class="mt-3">Toothpaste Bits</h3>
+            </div>
+            <div class="col-md-3 col-6 d-flex flex-column align-items-center">
+                <img src="shop_by_category_oral_care_2-optimized.jpg" alt="Oral Care" class="category-image">
+                <h3 class="mt-3">Oral Care</h3>
+            </div>
+            <div class="col-md-3 col-6 d-flex flex-column align-items-center">
+                <img src="jpeg-optimizer_shop_by_category_sets_1.jpg" alt="Sets" class="category-image">
+                <h3 class="mt-3">Sets</h3>
+            </div>
+            <div class="col-md-3 col-6 d-flex flex-column align-items-center">
+                <img src="shop_by_category_body_care_2-optimized.jpg" alt="Body Care" class="category-image">
+                <h3 class="mt-3">Body Care</h3>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Why Bits Are Better Section -->
+    
+    <div style="text-align: center;">
+        <img src="better.png" alt="why bits are better" style="width: 1500px; height: auto; display: block; margin-left: auto; margin-right: auto;">
+    </div>
+    
+    <!-- Best Sellers Section -->
+    <div class="best-sellers container py-5">
+        <h2 class="text-center mb-5" style="font-family: 'Arial', sans-serif; color: #333;">Shop Best Sellers</h2>
+        <div class="row justify-content-center d-flex flex-wrap">
+            <div class="card shadow-lg border-light mb-4" style="width: 23%; border-radius: 15px; overflow: hidden; transition: transform 0.3s ease;">
+                <img src="mobile-nav-tout-bits.jpg" class="card-img-top" alt="Toothpaste Bits Fluoride-Free">
+                <div class="card-body">
+                    <h5 class="card-title" style="font-size: 1.1rem; font-weight: 600; color: #333;">Toothpaste Bits Fluoride-Free</h5>
+                    <a href="#" class="btn btn-dark" style="border-radius: 30px; padding: 10px 20px; font-size: 14px; width: 100%;">ADD TO BAG</a>
+                </div>
+            </div>
+            <div class="card shadow-lg border-light mb-4" style="width: 23%; border-radius: 15px; overflow: hidden; transition: transform 0.3s ease;">
+                <img src="mobile-nav-tout-deo.jpg" class="card-img-top" alt="Toothpaste Bits with Fluoride">
+                <div class="card-body">
+                    <h5 class="card-title" style="font-size: 1.1rem; font-weight: 600; color: #333;">Toothpaste Bits with Fluoride</h5>
+                    <a href="#" class="btn btn-dark" style="border-radius: 30px; padding: 10px 20px; font-size: 14px; width: 100%;">ADD TO BAG</a>
+                </div>
+            </div>
+            <div class="card shadow-lg border-light mb-4" style="width: 23%; border-radius: 15px; overflow: hidden; transition: transform 0.3s ease;">
+                <img src="pc-mouthwash-no-bg.png" class="card-img-top" alt="Deodorant Set">
+                <div class="card-body">
+                    <h5 class="card-title" style="font-size: 1.1rem; font-weight: 600; color: #333;">Deodorant Set</h5>
+                    <a href="#" class="btn btn-dark" style="border-radius: 30px; padding: 10px 20px; font-size: 14px; width: 100%;">ADD TO BAG</a>
+                </div>
+            </div>
+            <div class="card shadow-lg border-light mb-4" style="width: 23%; border-radius: 15px; overflow: hidden; transition: transform 0.3s ease;">
+                <img src="pc-tpb-wf-2oz-mint-fluoride-no-bg.png" class="card-img-top" alt="Mouthwash Bits">
+                <div class="card-body">
+                    <h5 class="card-title" style="font-size: 1.1rem; font-weight: 600; color: #333;">Mouthwash Bits</h5>
+                    <a href="#" class="btn btn-dark" style="border-radius: 30px; padding: 10px 20px; font-size: 14px; width: 100%;">ADD TO BAG</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+     
+    
+    <!-- FAQs Section -->
+    <div class="faqs-section container">
+        <h2 class="text-center mb-5">FAQs</h2>
+        <div class="accordion" id="accordionFAQs">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                        Are Toothpaste Bits good for sensitive teeth?
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+                    <div class="accordion-body">
+                        Placeholder answer for sensitive teeth FAQ.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                        How do subscriptions work?
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
+                    <div class="accordion-body">
+                        Placeholder answer for subscriptions FAQ.
+                    </div>
+                </div>
+            </div>
+            <!-- Add more FAQ items as needed -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h4>Stay in the Know</h4>
+                    <form>
+                        <input type="email" class="form-control mb-3" placeholder="Enter email address">
+                        <button type="submit" class="btn btn-light">Subscribe</button>
+                    </form>
+                </div>
+                <div class="col-md-3">
+                    <h4>Shop</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#">All Products</a></li>
+                        <li><a href="#">Oral Care</a></li>
+                        <li><a href="#">Body</a></li>
+                        <li><a href="#">Sets</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h4>Learn</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Ingredients</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Store Locator</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h4>Follow</h4>
+                    <div class="footer-social">
+                        <a href="#">Instagram</a>
+                        <a href="#">Twitter</a>
+                        <a href="#">TikTok</a>
+                        <a href="#">Facebook</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p>&copy; 2025 Bite. All Rights Reserved.</p>
+                <p>
+                    <a href="#">Privacy Policy</a> | 
+                    <a href="#">Terms of Service</a> | 
+                    <a href="#">Shipping Policy</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
